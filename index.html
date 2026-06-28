@@ -173,6 +173,12 @@
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
+  @media (max-width: 600px) {
+    .scroll-indicator {
+      display: none;
+    }
+  }
+
   @keyframes scrollPulse {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
