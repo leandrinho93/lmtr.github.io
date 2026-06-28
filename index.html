@@ -187,6 +187,10 @@
   /* ── SECTIONS ── */
   section { padding: 100px 24px; max-width: 1200px; margin: 0 auto; }
 
+  @media (max-width: 900px) {
+    section { padding: 60px 20px; }
+  }
+
   .section-tag {
     font-family: 'Space Mono', monospace;
     font-size: 0.65rem; letter-spacing: 4px;
@@ -218,6 +222,13 @@
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 80px; align-items: center;
     margin-top: 60px;
+  }
+
+  @media (max-width: 900px) {
+    .sobre-grid {
+      margin-top: 24px;
+      gap: 24px;
+    }
   }
 
   .sobre-foto {
