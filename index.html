@@ -797,11 +797,20 @@
     .hero { padding: 90px 12px 60px; }
   }
   
-  img.expanded {
-    transform: scale(1.8);
-    z-index: 999;
-    position: relative;
-    cursor: zoom-out;
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.85);
+    align-items: center; justify-content: center;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 85vw; max-height: 85vh;
+    border-radius: 12px; object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 24px;
+    color: #fff; font-size: 2rem; cursor: pointer;
+    background: none; border: none; line-height: 1;
   }
   
 </style>
@@ -940,8 +949,8 @@
         </div>
       </div>
       <div class="app-mockup" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; height:auto;">
-        <img src="celular-meta-na-pista.png.jpg" alt="Tela Meta na Pista" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
-        <img src="celular-meta-na-pista2.png.jpg" alt="Tela Meta na Pista 2" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
+        <img src="celular-meta-na-pista.png.jpg" alt="Tela Meta na Pista" onclick="abrirLightbox(this.src)" style="width:100%; height:auto; cursor:pointer;">
+        <img src="celular-meta-na-pista2.png.jpg" alt="Tela Meta na Pista 2" onclick="abrirLightbox(this.src)" style="width:100%; height:auto; cursor:pointer;">
       </div>
     </div>
 
@@ -981,8 +990,8 @@
         </div>
       </div>
       <div class="app-mockup" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; height:auto;">
-        <img src="celular-estrategia-loteria.png.png" alt="Tela Estratégia Loteria" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
-        <img src="celular-estrategia-loteria2.png.png" alt="Tela Estratégia Loteria 2" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
+        <img src="celular-estrategia-loteria.png.png" alt="Tela Estratégia Loteria" onclick="abrirLightbox(this.src)" style="width:100%; height:auto; cursor:pointer;">
+        <img src="celular-estrategia-loteria2.png.png" alt="Tela Estratégia Loteria 2" onclick="abrirLightbox(this.src)" style="width:100%; height:auto; cursor:pointer;">
       </div>
     </div>
 
@@ -1277,7 +1286,6 @@
   // NAV ACTIVE HIGHLIGHT
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(s => {
@@ -1287,10 +1295,22 @@
       a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
     });
   });
-
-  // INICIALIZA AS CHAVES ASSIM QUE O SITE CARREGAR
   document.addEventListener("DOMContentLoaded", definirChavesPromocionais);
+  function abrirLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function fecharLightbox(e) {
+    if (e.target === document.getElementById('lightbox')) {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+  }
 </script>
+
+<div class="lightbox" id="lightbox" onclick="fecharLightbox(event)">
+  <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 </body>
 </html>
