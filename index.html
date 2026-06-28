@@ -796,6 +796,14 @@
     section { padding: 50px 12px; }
     .hero { padding: 90px 12px 60px; }
   }
+  
+  img.expanded {
+    transform: scale(1.8);
+    z-index: 999;
+    position: relative;
+    cursor: zoom-out;
+  }
+  
 </style>
 </head>
 <body>
@@ -886,10 +894,10 @@
 <div class="full-divider"></div>
 
 <section id="apps">
-  <div class="apps-header">
-    <div>
+  <div class="apps-header" style="flex-direction: column; align-items: center;">
+    <div style="text-align: center;">
       <span class="section-tag">// 002 · Produtos</span>
-<h2 class="section-title" style="font-size: clamp(1.5rem, 3.75vw, 2.625rem); text-align: center;">Apps na Play Store</h2>
+      <h2 class="section-title" style="font-size: clamp(1.5rem, 3.75vw, 2.625rem);">Apps na Play Store</h2>
     </div>
     <p class="section-sub" style="max-width:340px;">Aplicativos publicados, em constante atualização e disponíveis para download agora.</p>
   </div>
@@ -931,9 +939,9 @@
           </a>
         </div>
       </div>
-      <div class="app-mockup">
-        <img src="celular-meta-na-pista.png.jpg" alt="Tela Meta na Pista">
-        <img src="celular-meta-na-pista2.png.jpg" alt="Tela Meta na Pista 2">
+      <div class="app-mockup" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; height:auto;">
+        <img src="celular-meta-na-pista.png.jpg" alt="Tela Meta na Pista" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
+        <img src="celular-meta-na-pista2.png.jpg" alt="Tela Meta na Pista 2" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
       </div>
     </div>
 
@@ -972,9 +980,9 @@
           </a>
         </div>
       </div>
-      <div class="app-mockup">
-        <img src="celular-estrategia-loteria.png.png" alt="Tela Estratégia Loteria">
-        <img src="celular-estrategia-loteria2.png.png" alt="Tela Estratégia Loteria 2">
+      <div class="app-mockup" style="display:grid; grid-template-columns:1fr 1fr; gap:8px; height:auto;">
+        <img src="celular-estrategia-loteria.png.png" alt="Tela Estratégia Loteria" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
+        <img src="celular-estrategia-loteria2.png.png" alt="Tela Estratégia Loteria 2" onclick="this.classList.toggle('expanded')" style="cursor:zoom-in; width:100%; height:auto; transition:transform 0.3s;">
       </div>
     </div>
 
